@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 import sqlite3
 
-# ---------------- Database ----------------
 def init_db():
     conn = sqlite3.connect('tasks.db')
     c = conn.cursor()
@@ -49,7 +48,6 @@ def toggle_task(task_id, completed):
     conn.commit()
     conn.close()
 
-# ---------------- Tkinter UI ----------------
 def refresh_list():
     for widget in task_frame.winfo_children():
         widget.destroy()
@@ -106,7 +104,6 @@ def edit_task_ui(task_id, old_task):
         edit_task(task_id, new_task.strip())
         refresh_list()
 
-# ---------------- Main Window ----------------
 root = tk.Tk()
 root.title("📝 To-Do List with Checkboxes")
 root.geometry("400x500")
@@ -131,8 +128,8 @@ canvas.configure(yscrollcommand=scrollbar.set)
 canvas.pack(side="left", fill="both", expand=True)
 scrollbar.pack(side="right", fill="y")
 
-# Initialize
 init_db()
 refresh_list()
 
 root.mainloop()
+
