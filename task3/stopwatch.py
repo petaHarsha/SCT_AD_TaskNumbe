@@ -2,7 +2,6 @@ import tkinter as tk
 import time
 import sqlite3
 
-# ===== Database Setup =====
 def init_db():
     conn = sqlite3.connect("laps.db")
     c = conn.cursor()
@@ -22,7 +21,6 @@ def save_lap(lap_time):
     conn.commit()
     conn.close()
 
-# ===== Stopwatch Logic =====
 class StopwatchApp:
     def __init__(self, root):
         self.root = root
@@ -97,9 +95,9 @@ class StopwatchApp:
             self.lap_listbox.insert(tk.END, row[0])
         conn.close()
 
-# ===== Run App =====
 if __name__ == "__main__":
     init_db()
     root = tk.Tk()
     app = StopwatchApp(root)
     root.mainloop()
+
